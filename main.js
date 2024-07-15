@@ -14,16 +14,16 @@ function clicklvl() {
     if (score > clickcosttest) {
         clickerlvl++
         score = score - clicklvlcost
-        clicklvlcost = clicklvlcost + 200
-        clickcosttest = clickcosttest + 200
+        clicklvlcost = clicklvlcost + 100
+        clickcosttest = clickcosttest + 100
         clickerlvltext.innerText = "Clicker- Lvl " + clickerlvl + " - Cost: " + clicklvlcost;
         scoreshow.innerText = "" + score;
     }
 }
 
 var autocosttest = 50
-var autocost = 1000
-var autolvl = 0
+var autocost = 100
+var autolvl = 1
 
 function AutoClick() {
     if (score > autocosttest) {

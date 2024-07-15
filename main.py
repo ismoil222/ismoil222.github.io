@@ -13,12 +13,12 @@ dp = Dispatcher()
 
 @dp.message(CommandStart())
 async def handle_start(message: types.Message):
-    tgchanel = InlineKeyboardButton(text="Play❤️‍🔥", web_app=WebAppInfo(url='https://codepen.io/jkantner/pen/vYwoPOd'))
+    tgchanel = InlineKeyboardButton(text="Play❤️‍🔥", web_app=WebAppInfo(url='https://ismoil222.github.io'))
     row = [tgchanel]
     rows = [row]
     markup = InlineKeyboardMarkup(inline_keyboard=rows)
     await message.answer(text=f"Hello {message.from_user.full_name},"
-                              f" play tap to earn to play Mycoin✔ ", reply_markup=markup,)
+                            f" play tap to earn to play Mycoin✔ ", reply_markup=markup,)
 
 
 @dp.message(Command("help"))

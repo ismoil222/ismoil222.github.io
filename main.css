@@ -1,7 +1,22 @@
 body {
-    background-color: #272727;
+    background: linear-gradient(84deg, #ff9900,  #212121);
     color: rgb(219, 219, 219);
     font-family: sans-serif;
+}
+
+.container {
+    margin-top: 20%;
+}
+
+#div {
+    width: 500px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    height: 680px;
+    position: absolute;
+    top: 63px;
+    left: 0px;
+    background-color: #272727;
 }
 
 #lvlupclicker {  
@@ -9,7 +24,7 @@ body {
     height: 40px;
     background: transparent;
     color: rgb(219, 219, 219);   
-    font-size:10px;
+    font-size:15px;
     margin-top: 10px;
     font-weight: 500;
     background-color:rgb(30, 30, 30);
@@ -21,19 +36,7 @@ body {
     height: 40px;
     background: transparent;
     color: rgb(219, 219, 219);   
-    font-size:10px;
-    margin-top: 10px;
-    font-weight: 500;
-    background-color:rgb(30, 30, 30);
-    font-family: sans-serif;
-}
-
-#energybtn {
-    border: none;
-    height: 40px;
-    background: transparent;
-    color: rgb(219, 219, 219);   
-    font-size:10px;
+    font-size:15px;
     margin-top: 10px;
     font-weight: 500;
     background-color:rgb(30, 30, 30);
@@ -58,10 +61,10 @@ body {
 #click {  
     background-color: #272727; 
     border: none;
+    position: relative;
 }
 #koekje {
-    width:50%; 
-}
-.container {
-    margin-top: 20%;
+    width:70%;
+    border-radius: 50%;
+    position: relative;
 }
