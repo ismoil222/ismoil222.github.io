@@ -4,8 +4,9 @@ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram import Bot, Dispatcher, types
 from aiogram.types.web_app_info import WebAppInfo
 from aiogram.filters import CommandStart, Command
+from decouple import config
 
-token = '7306901055:AAG9dV2QILtPtz62oyIEU73IGKY9CFTp1nI'
+token = config('TOKEN', cast=str)
 
 bot = Bot(token=token)
 dp = Dispatcher()
