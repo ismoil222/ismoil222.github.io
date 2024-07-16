@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
 body {
-    background: linear-gradient(84deg, #ff9900,  #212121);
+    background:radial-gradient(200% 100% at bottom center,#F7F7B6,#E96F92,#75517D,#1B2947); 
+background:radial-gradient(220% 105% at top center,#1B2947 10%,#75517D 40%,#E96F92 65%,#F7F7B6); 
+background-attachment:fixed; 
+overflow:hidden;
     color: rgb(219, 219, 219);
     font-family: sans-serif;
 }
@@ -8,16 +13,7 @@ body {
     margin-top: 20%;
 }
 
-#div {
-    width: 350px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    height: 490px;
-    position: absolute;
-    top: 63px;
-    left: 0px;
-    background-color: #272727;
-}
+
 
 #lvlupclicker {  
     border: none;
@@ -60,11 +56,41 @@ body {
 }
 
 #click {  
-    width: 150px;
-    height: 150px;
+    width: 250px;
+    height: 250px;
     border: none;
     bottom: 140px;
     left: 100px;
     border-radius: 50%;
-    
+    background-image: url(logo.png);
+}
+
+@keyframes rotate{
+0%{
+    transform:perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(0);
+} 
+100%{
+    transform:perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(-360deg);
+    } 
+}
+.stars{
+    transform:perspective(500px);
+    transform-style:preserve-3d;
+    position:absolute;
+    bottom:0;
+    perspective-origin:50% 100%;
+    left:50%;
+    animation:rotate 90s infinite linear;
+}
+.star{
+    width:2px;
+    height:2px;
+    background:#F7F7B6;
+    border-radius:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    transform-origin:0 0 -300px;
+    transform:translate3d(0,0,-300px);
+    backface-visibility:hidden;
 }
