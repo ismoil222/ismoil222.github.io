@@ -9,10 +9,10 @@ body {
 }
 
 #div {
-    width: 500px;
+    width: 400px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    height: 680px;
+    height: 600px;
     position: absolute;
     top: 63px;
     left: 0px;
@@ -54,17 +54,18 @@ body {
     height: 15px;   
     color: rgb(219, 219, 219);   
     font-size:20px;
+    margin-top: 90px;
     font-weight:1000;
     font-family: sans-serif;
 }
 
 #click {  
-    background-color: #272727; 
+    width: 200px;
+    height: 200px;
     border: none;
-    position: relative;
-}
-#koekje {
-    width:70%;
+    position: absolute;
+    bottom: 195px;
+    left: 110px;
     border-radius: 50%;
-    position: relative;
+    
 }
