@@ -9,10 +9,10 @@ body {
 }
 
 #div {
-    width: 400px;
+    width: 380px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    height: 600px;
+    height: 550px;
     position: absolute;
     top: 63px;
     left: 0px;
@@ -64,8 +64,8 @@ body {
     height: 200px;
     border: none;
     position: absolute;
-    bottom: 195px;
-    left: 110px;
+    bottom: 140px;
+    left: 100px;
     border-radius: 50%;
     
 }
