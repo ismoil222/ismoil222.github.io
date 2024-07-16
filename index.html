@@ -5,29 +5,32 @@
     <meta name="viewport"
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>mycoin</title>
+    <title>Tapcoin</title>
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
 
+<nav>
+    <a href="#" id="hideButton" onclick="myFunction()">MAIN</a>
+    <a href="#" id="showButton" onclick="myFunction()">BOOST</a>
+    <a href="#">AIRDROP</a>
+    <div id="indicator"></div>
+</nav>
 
-
-<div class="container">
+<div id="container" class="hidden2">
     <div id="div">
-    <center>
-        <p id="scoreshow"></p>
-        <button id= "click" onclick= "point()" onclick="tekst">T</button>
+        <center>
+            <p id="scoreshow"></p>
+            <button id= "click" onclick= "point()" onclick="tekst">T</button>
+        </center>
+    </div>
+</div>
 
-<h3 id="shoptag">Boosts🚀</h3>
+
+<center id="center" class="hidden">
+    <button id="lvlupclicker" onclick="clicklvl()" class="container2"></button>
 </center>
-<center>
-    
-        <button id="lvlupclicker" onclick="clicklvl()"></button>
-        <button id="AutoClick" onclick="AutoClick()"></button>
-    
-</center>
-</div>
-</div>
+
 <script src="main.js"></script>
 
 </body>

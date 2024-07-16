@@ -1,5 +1,6 @@
 import asyncio
 import logging
+import sqlite3
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram import Bot, Dispatcher, types
 from aiogram.types.web_app_info import WebAppInfo
@@ -13,13 +14,12 @@ dp = Dispatcher()
 
 @dp.message(CommandStart())
 async def handle_start(message: types.Message):
-    tgchanel = InlineKeyboardButton(text="Play❤️‍🔥", web_app=WebAppInfo(url='https://ismoil222.github.io'))
-    row = [tgchanel]
+    tgchannel = InlineKeyboardButton(text="Play❤️‍🔥", web_app=WebAppInfo(url='https://ismoil222.github.io'))
+    row = [tgchannel]
     rows = [row]
     markup = InlineKeyboardMarkup(inline_keyboard=rows)
     await message.answer(text=f"Hello {message.from_user.full_name},"
                             f" play tap to earn to play Mycoin✔ ", reply_markup=markup,)
-
 
 @dp.message(Command("help"))
 async def handle_help(message: types.Message):

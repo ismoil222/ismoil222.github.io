@@ -21,26 +21,23 @@ function clicklvl() {
     }
 }
 
-var autocosttest = 50
-var autocost = 100
-var autolvl = 1
+    clickerlvltext.innerText = "Multitap Lvl " + clickerlvl + " " + clicklvlcost + " T";
 
-function AutoClick() {
-    if (score > autocosttest) {
-        autolvl ++
-        score = score - autocost
-        autocost = autocost + 30
-        autocosttest = autocosttest + 30
-        autolvltext.innerText = "Auto Click- Lvl " + autolvl + " - Cost: " + autocost;
-        scoreshow.innerText = "" + score;
-    }
-}
-
-    clickerlvltext.innerText = "Multitap Lvl " + clickerlvl + " - Cost: " + clicklvlcost;
-
-    autolvltext.innerText = "Buy Auto Click -" + " Cost: " + autocost;
 function point() {
     score = score + clickerlvl
     var scoreshow = document.getElementById('scoreshow')
     scoreshow.innerText = "" + score;
 }
+
+document.getElementById('showButton').addEventListener('click',
+    function() {
+        document.getElementById('center').classList.toggle('hidden');
+        
+    }
+);
+
+document.getElementById('hideButton').addEventListener('click',
+    function() {
+        document.getElementById('center').classList.toggle('hidden');
+    }
+);
