@@ -11,15 +11,17 @@ body {
 
 #div {
     left: 70px;
-
 }
+
+
 
 .hidden {
     display: none;
 }
 
+
 #center {
-    margin-bottom: 250px;
+    margin-bottom: 100px;
     left: 94px;
     height: 100px;
 }
@@ -32,7 +34,8 @@ body {
     padding: 4rem;
     margin-bottom: -10px;
     display: flex;
-    background-image: url(pexels-rompalliharish-1698618.jpg);
+    color: rgb(202, 202, 202);
+    background-color: #1d1d1d;
     background-position: var(--bX) var(--bY);
     background-size: 40rem auto;
     box-shadow: 0 0 3rem .5rem hsla(0, 0%, 0%, .2); 
@@ -64,7 +67,7 @@ body {
     color: rgb(219, 219, 219);   
     font-size: 40px;
     font-weight: 600;
-    margin-top: 250px;
+    margin-top: 200px;
     font-family: sans-serif;
 }
 
@@ -91,7 +94,7 @@ body {
 nav {
     position: absolute;
     bottom: 0px;
-    margin-left: 70px;
+    margin-left: 52px;
     background-color: #1d1d1d;
     width: 325px;
     display: table;

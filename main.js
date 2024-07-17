@@ -35,9 +35,8 @@ function myfunction() {
 }
 
 function myfunction2() {
-    document.getElementById('showButton').addEventListener('click',
-        document.getElementById('container').classList.remove('hidden2')
-    );
+    var textElement = document.getElementById("click");
+    textElement.classList.remove("hidden2");
 }
 
 function myfunction3() {
