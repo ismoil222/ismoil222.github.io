@@ -36,7 +36,7 @@ function myfunction() {
 
 function myfunction2() {
     document.getElementById('showButton').addEventListener('click',
-        document.getElementById('center').classList.remove('hidden')
+        document.getElementById('container').classList.remove('hidden2')
     );
 }
 

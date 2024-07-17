@@ -7,18 +7,11 @@ body {
     font-family: "Poppins", sans-serif;
 }
 
-#container {
-    display: inline;
-}
 
-.hidden2 {
-    display: none;
-}
 
 #div {
-    position: absolute;
     left: 70px;
-    bottom: 300px;
+
 }
 
 .hidden {
@@ -26,9 +19,9 @@ body {
 }
 
 #center {
-    position: absolute;
-    bottom: 200px;
+    margin-bottom: 250px;
     left: 94px;
+    height: 100px;
 }
 
 #lvlupclicker {  
@@ -71,7 +64,7 @@ body {
     color: rgb(219, 219, 219);   
     font-size: 40px;
     font-weight: 600;
-    margin-top: 100px;
+    margin-top: 250px;
     font-family: sans-serif;
 }
 
@@ -79,7 +72,7 @@ body {
     width: 250px;
     height: 250px;
     border: none;
-    bottom: 140px;
+    margin-bottom: 40px;
     color: #161616;
     background-color: #03E9F4;
     font-family: "Permanent Marker", cursive;
@@ -98,8 +91,9 @@ body {
 nav {
     position: absolute;
     bottom: 0px;
+    margin-left: 70px;
     background-color: #1d1d1d;
-    width: 319px;
+    width: 325px;
     display: table;
     transform: translateY(-50%);
 }

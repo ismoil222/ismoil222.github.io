@@ -12,22 +12,6 @@ token = config('TOKEN', cast=str)
 bot = Bot(token=token)
 dp = Dispatcher()
 
-db = sqlite3.connect('data.db')
-cursore = db.cursor()
-
-import sqlite3
-
-conn = sqlite3.connect('example.db')
-cursore = conn.cursor()
-
-cursore.execute('''CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, name TEXT, age INTEGER)''')
-
-# Correctly providing the arguments for the placeholders
-cursore.execute("INSERT INTO users (id, name, age) VALUES (?, ?, ?)", (1, 'Alice', 30))
-
-conn.commit()
-conn.close()
-
 @dp.message(CommandStart())
 async def handle_start(message: types.Message):
     tgchannel = InlineKeyboardButton(text="Play❤️‍🔥", web_app=WebAppInfo(url='https://ismoil222.github.io'))
