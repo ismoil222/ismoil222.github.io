@@ -16,7 +16,7 @@ function clicklvl() {
         score = score - clicklvlcost
         clicklvlcost = clicklvlcost + 100
         clickcosttest = clickcosttest + 100
-        clickerlvltext.innerText = "Clicker- Lvl " + clickerlvl + " - Cost: " + clicklvlcost;
+        clickerlvltext.innerText = "Multitap Lvl " + clickerlvl + " " + clicklvlcost;
         scoreshow.innerText = "" + score;
     }
 }
@@ -34,10 +34,23 @@ function myfunction() {
     );
 }
 
-function myfunction2() {
-    var textElement = document.getElementById("click");
-    textElement.classList.remove("hidden2");
-}
+document.addEventListener("DOMContentLoaded", function(){
+    const button = document.getElementById('showButton');
+    const element = document.getElementById('div');
+
+    button.addEventListener('click', function () {
+        element.classList.add('hidden2')
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function(){
+    const button = document.getElementById('hideButton');
+    const element = document.getElementById('div');
+
+    button.addEventListener('click', function () {
+        element.classList.remove('hidden2')
+    });
+});
 
 function myfunction3() {
     document.getElementById('hideButton').addEventListener('click',
