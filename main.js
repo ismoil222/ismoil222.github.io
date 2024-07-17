@@ -28,16 +28,19 @@ function point() {
     var scoreshow = document.getElementById('scoreshow')
     scoreshow.innerText = "" + score;
 }
+function myfunction() {
+    document.getElementById('showButton').addEventListener('click',
+        document.getElementById('center').classList.remove('hidden')
+    );
+}
 
-document.getElementById('showButton').addEventListener('click',
-    function() {
-        document.getElementById('center').classList.toggle('hidden');
-        
-    }
-);
+function myfunction2() {
+    document.getElementById('showButton').addEventListener('click',
+        document.getElementById('center').classList.remove('hidden')
+    );
+}
 
-document.getElementById('hideButton').addEventListener('click',
-    function() {
-        document.getElementById('center').classList.toggle('hidden');
-    }
-);
+function myfunction3() {
+    document.getElementById('hideButton').addEventListener('click',
+        document.getElementById('center').classList.add('hidden'));
+}
