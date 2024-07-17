@@ -36,19 +36,21 @@ function myfunction() {
 
 document.addEventListener("DOMContentLoaded", function(){
     const button = document.getElementById('showButton');
-    const element = document.getElementById('div');
+    const element1 = document.getElementById('click');
 
     button.addEventListener('click', function () {
-        element.classList.add('hidden2')
+        element1.classList.add('hidden2')
     });
 });
 
 document.addEventListener("DOMContentLoaded", function(){
     const button = document.getElementById('hideButton');
-    const element = document.getElementById('div');
+    const element2 = document.getElementById('div');
+    const element3 = document.getElementById('click');
 
     button.addEventListener('click', function () {
-        element.classList.remove('hidden2')
+        element2.classList.remove('hidden2')
+        element3.classList.remove('hidden2')
     });
 });
 
