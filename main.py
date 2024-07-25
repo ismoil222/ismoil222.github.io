@@ -1,6 +1,5 @@
 import asyncio
 import logging
-import sqlite3
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram import Bot, Dispatcher, types
 from aiogram.types.web_app_info import WebAppInfo

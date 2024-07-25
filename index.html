@@ -1,36 +1,39 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tapcoin</title>
-    <link rel="stylesheet" href="main.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>TapCoin</title>
+
 </head>
 <body>
 
+<div class="container">
+    <div class="stats"><span id="clickCount">0</span></div>
 
-<div id="container">
-    <div id="div">
-        <center>
-            <p id="scoreshow"></p>
-            <button id= "click" onclick= "point()" onclick="tekst">T</button>
-        </center>
+    <div class="circle" id="tapCircle">T</div>
+
+    <div class="progress-container">
+
+      <div class="progress-bar" id="progressBar">⚡ 5000 / 5000 ⚡</div>
+
     </div>
-</div>
 
+    <center id="center" class="hidden">
+      <button id="lvlupclicker" onclick="clicklvl()" class="container2"></button>
+    </center>
 
-<center id="center" class="hidden">
-    <button id="lvlupclicker" onclick="clicklvl()" class="container2"></button>
-</center>
+    <nav>
+        <a href="#" id="hideButton"  onclick="myfunction3()">MAIN</a>
+        <a href="#" id="showButton" onclick="myfunction()">BOOST</a>
+        <a href="#">AIRDROP</a>
+        <div id="indicator"></div>
+    </nav>
 
-<nav>
-    <a href="#" id="hideButton"  onclick="myfunction3()">MAIN</a>
-    <a href="#" id="showButton" onclick="myfunction()">BOOST</a>
-    <a href="#">AIRDROP</a>
-    <div id="indicator"></div>
-</nav>
+  </div>
 
 <script src="main.js"></script>
 
