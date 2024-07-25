@@ -16,8 +16,11 @@ body {
     border-radius: 10px;
   }
 
+.hidden2 {
+  opacity: 0;
+}
+
   #lvlupclicker {
-    opacity: 0;
     width: 200px;
     height: 100px;
     border: none;

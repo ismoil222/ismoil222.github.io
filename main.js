@@ -25,7 +25,7 @@ const setCookie = (cname, cvalue, exdays) => {
   document.addEventListener("DOMContentLoaded", function() {
     let clickCount = parseInt(getCookie("clickCountCookie")) || 0;
     let boostActive = false;
-    const clickLimit = 5000;
+    const clickLimit = 500;
     let clicksRemaining = parseInt(getCookie("clicksRemainingCookie")) || clickLimit;
     const lastExitTime = parseInt(getCookie("lastExitTimeCookie")) || Date.now();
     const currentTime = Date.now();
@@ -58,13 +58,10 @@ const setCookie = (cname, cvalue, exdays) => {
     setInterval(() => {
       if (!boostActive && clicksRemaining < clickLimit) {
         clicksRemaining += 1;
-        if (clicksRemaining > clickLimit) {
-          clicksRemaining = clickLimit;
-        }
         updateProgressBar();
     }
     }, 1000);
-    setInterval(resetProgressBar, 15000); // Reset every 15 seconds
+    setInterval(resetProgressBar, 15000); 
     updateProgressBar();
     updateClickCount(0);
 });
@@ -81,4 +78,35 @@ function clicklvl() {
         clickerlvltext.innerText = "Multitap Lvl " + clickerlvl + " " + clicklvlcost;
         scoreshow.innerText = "" + score;
     }
+}
+
+function myfunction() {
+  document.getElementById('showButton').addEventListener('click',
+      document.getElementById('center').classList.remove('hidden')
+  );
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+  const button = document.getElementById('showButton');
+  const element1 = document.getElementById('click1');
+
+  button.addEventListener('click', function () {
+      element1.classList.add('hidden2')
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function(){
+  const button = document.getElementById('hideButton');
+  const element2 = document.getElementById('div');
+  const element3 = document.getElementById('click1');
+
+  button.addEventListener('click', function () {
+      element2.classList.remove('hidden2')
+      element3.classList.remove('hidden2')
+  });
+});
+
+function myfunction3() {
+  document.getElementById('hideButton').addEventListener('click',
+      document.getElementById('center').classList.add('hidden'));
 }
