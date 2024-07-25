@@ -1,112 +1,107 @@
-
-const setCookie = (cname, cvalue, exdays) => {
-    const d = new Date();
-    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-    const expires = "expires=" + d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-  }
-
-
-  const getCookie = (cname) => {
-    const name = cname + "=";
-    const decodedCookie = decodeURIComponent(document.cookie);
-    const ca = decodedCookie.split(';');
-    for (let i = 0; i < ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) === ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) === 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
-  }
-  document.addEventListener("DOMContentLoaded", function() {
-    let clickCount = parseInt(getCookie("clickCountCookie")) || 0;
-    let boostActive = false;
-    const clickLimit = 500;
-    let clicksRemaining = parseInt(getCookie("clicksRemainingCookie")) || clickLimit;
-    const lastExitTime = parseInt(getCookie("lastExitTimeCookie")) || Date.now();
-    const currentTime = Date.now();
-    const elapsedSeconds = Math.floor((currentTime - lastExitTime) / 1000);
-    clicksRemaining = Math.min(clickLimit, clicksRemaining + 2 * elapsedSeconds);
-    const clickCountSpan = document.getElementById('clickCount');
-    const tapCircle = document.getElementById('tapCircle');
-    const progressBar = document.getElementById('progressBar');
-    const updateClickCount = (increment) => {
-      clickCount += increment;
-      clickCountSpan.textContent = clickCount;
-      setCookie("clickCountCookie", clickCount, 30);
-    };
-    const updateProgressBar = () => {
-      progressBar.style.width = `${(clicksRemaining / clickLimit)* 100}%`;
-      progressBar.textContent = `⚡ ${clicksRemaining} / ${clickLimit}⚡`;
-    };
-    const resetProgressBar = () => {
-      clicksRemaining = clickLimit;
-      updateProgressBar();
-    };
-    tapCircle.addEventListener('click', function() {
-      const increment = boostActive ? 15 : 1;
-      if (clicksRemaining > 0) {
-        clicksRemaining--;
-        updateClickCount(increment);
-        updateProgressBar();
-      }
+// script.js
+document.addEventListener("DOMContentLoaded", function() {
+    let clicks = parseInt(localStorage.getItem('clicks')) || 0;
+    let energy = parseInt(localStorage.getItem('energy')) || 500;
+    let upgradeLevel = parseInt(localStorage.getItem('upgradeLevel')) || 1;
+    let upgradeCost = parseInt(localStorage.getItem('upgradeCost')) || 10;
+    
+    const clicksElement = document.getElementById('clicks');
+    const energyElement = document.getElementById('energy');
+    const upgradeInfoElement = document.getElementById('upgrade-info');
+    const upgradeCostElement = document.getElementById('upgradeCost');
+    const clickerButton = document.getElementById('clicker');
+    const upgradeButton = document.getElementById('upgrade');
+    
+    clicksElement.textContent = clicks;
+    energyElement.textContent = energy;
+    upgradeCostElement.textContent = upgradeCost;
+    
+    clickerButton.addEventListener('click', function() {
+        if (energy > 0) {
+            clicks += upgradeLevel;
+            energy--;
+            clicksElement.textContent = clicks;
+            energyElement.textContent = energy;
+            showUpgradeInfo(`+${upgradeLevel} `);
+            saveGame();
+        }
     });
-    setInterval(() => {
-      if (!boostActive && clicksRemaining < clickLimit) {
-        clicksRemaining += 1;
-        updateProgressBar();
+    
+    function showUpgradeInfo(text) {
+        upgradeInfoElement.textContent = text;
+        setTimeout(() => {
+            upgradeInfoElement.textContent = '';
+        }, 1000);
     }
+
+    upgradeButton.addEventListener('click', function() {
+        if (clicks >= upgradeCost) {
+            clicks -= upgradeCost;
+            upgradeLevel++;
+            upgradeCost = (upgradeLevel + 1) * 10;
+            energy = 100; // Восстановление энергии
+            clicksElement.textContent = clicks;
+            energyElement.textContent = energy;
+            upgradeCostElement.textContent = upgradeCost;
+            upgradeMessage.textContent = `+(левел: ${upgradeLevel})`;
+            saveGame();
+            setTimeout(() => upgradeMessage.textContent = '', 2000); // Скрыть сообщение через 2 секунды
+        }
+    });
+
+    upgradeButton.addEventListener('click', function() {
+        if (clicks >= upgradeCost) {
+            clicks -= upgradeCost;
+            upgradeCost += 10;
+            energy = 100;
+            updateUI();
+            saveGame();
+        }
+    });
+    
+    function updateUI() {
+        clicksElement.textContent = clicks;
+        energyElement.textContent = energy;
+        upgradeCostElement.textContent = upgradeCost;
+        upgradeButton.classList.toggle('disabled', clicks < upgradeCost);
+    }
+
+    function saveGame() {
+        localStorage.setItem('clicks', clicks);
+        localStorage.setItem('energy', energy);
+        localStorage.setItem('upgradeCost', upgradeCost);
+    }
+
+    // Восстановление энергии
+    setInterval(function() {
+        if (energy < 100) {
+            energy++;
+            updateUI();
+            saveGame();
+        }
     }, 1000);
-    setInterval(resetProgressBar, 15000); 
-    updateProgressBar();
-    updateClickCount(0);
-});
-var clickerlvl = 1
-var clickcosttest = 50
-var clicklvlcost = 50
 
-function clicklvl() {
-    if (score > clickcosttest) {
-        clickerlvl++
-        score = score - clicklvlcost
-        clicklvlcost = clicklvlcost + 100
-        clickcosttest = clickcosttest + 100
-        clickerlvltext.innerText = "Multitap Lvl " + clickerlvl + " " + clicklvlcost;
-        scoreshow.innerText = "" + score;
-    }
-}
-
-function myfunction() {
-  document.getElementById('showButton').addEventListener('click',
-      document.getElementById('center').classList.remove('hidden')
-  );
-}
-
-document.addEventListener("DOMContentLoaded", function(){
-  const button = document.getElementById('showButton');
-  const element1 = document.getElementById('click1');
-
-  button.addEventListener('click', function () {
-      element1.classList.add('hidden2')
-  });
+    updateUI();
 });
 
 document.addEventListener("DOMContentLoaded", function(){
-  const button = document.getElementById('hideButton');
-  const element2 = document.getElementById('div');
-  const element3 = document.getElementById('click1');
-
-  button.addEventListener('click', function () {
-      element2.classList.remove('hidden2')
-      element3.classList.remove('hidden2')
+    const button = document.getElementById('showButton');
+    const element1 = document.getElementById('upgrade');
+    const element2 = document.getElementById('mains');
+  
+    button.addEventListener('click', function () {
+        element1.classList.remove('hidden2')
+        element2.classList.add('hidden2')
+    });
   });
-});
-
-function myfunction3() {
-  document.getElementById('hideButton').addEventListener('click',
-      document.getElementById('center').classList.add('hidden'));
-}
+  
+  document.addEventListener("DOMContentLoaded", function(){
+    const button = document.getElementById('hideButton');
+    const element1 = document.getElementById('upgrade');
+    const element2 = document.getElementById('mains');
+  
+    button.addEventListener('click', function () {
+        element1.classList.add('hidden2')
+        element2.classList.remove('hidden2')
+    });
+  });

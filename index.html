@@ -11,29 +11,38 @@
 </head>
 <body>
 
-<div class="container">
-    <div class="stats"><span id="clickCount">0</span></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notcoin Clicker Game</title>
+    <link rel="stylesheet" href="main.csscss">
+</head>
+<body>
+    <div id="game">
+        <span id="clicks">0</span>
+        <div class="stats" id="mains">
 
-    <div class="circle" id="tapCircle">T</div>
-
-    <div class="progress-container">
-
-      <div class="progress-bar" id="progressBar">⚡ 500 / 500 ⚡</div>
-
+            <button id="clicker">T</button>
+            <span id="energy">500</span>
+        </div>
+       <div id="upgrade1" class="hidden2">
+            <button id="upgrade" class="disabled">Multiply Costs: <span id="upgradeCost">10</span> T</button>
+        </div>
+        <p id="upgradeMessage"></p>
+        <nav>
+            <a href="#" id="hideButton">MAIN</a>
+            <a href="#" id="showButton">BOOST</a>
+            <a href="#">AIRDROP</a>
+            <div id="indicator"></div>
+        </nav>
+        <div id="upgrade-info"></div>
     </div>
+    <script src="main.js.js"></script>
+</body>
+</html>
 
-    <!--<center id="center" class="hidden">
-      <button id="lvlupclicker" onclick="clicklvl()" class="hidden"></button>
-    </center> -->
-
-    <nav>
-        <a href="#" id="hideButton"  onclick="myfunction3()">MAIN</a>
-        <a href="#" id="showButton" onclick="myfunction()">BOOST</a>
-        <a href="#">AIRDROP</a>
-        <div id="indicator"></div>
-    </nav>
-
-  </div>
 
 <script src="main.js"></script>
 
