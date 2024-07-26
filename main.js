@@ -90,20 +90,38 @@ document.addEventListener("DOMContentLoaded", function(){
     const button = document.getElementById('showButton');
     const element1 = document.getElementById('upgrade1');
     const element2 = document.getElementById('mains');
-  
+
     button.addEventListener('click', function () {
         element1.classList.remove('hidden2')
         element2.classList.add('hidden2')
     });
-  });
-  
-  document.addEventListener("DOMContentLoaded", function(){
+});
+
+document.addEventListener("DOMContentLoaded", function(){
     const button = document.getElementById('hideButton');
     const element1 = document.getElementById('upgrade1');
     const element2 = document.getElementById('mains');
-  
+
     button.addEventListener('click', function () {
         element1.classList.add('hidden2')
         element2.classList.remove('hidden2')
     });
-  });
+});
+
+document.addEventListener("DOMContentLoaded", function(){
+    const button = document.getElementById('clicker');
+    const element12 = document.getElementById('clicker');
+
+    button.addEventListener('click', function () {
+        element12.classList.add('tapp')
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function(){
+    const button2 = document.getElementById('showButton');
+    const button3 = document.getElementById('showButton');
+
+    button2.addEventListener('click', function () {
+        button3.classList.add('clicked')
+    });
+});
