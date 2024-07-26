@@ -17,27 +17,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notcoin Clicker Game</title>
-    <link rel="stylesheet" href="main.csscss">
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
     <div id="game">
         <span id="clicks">0</span>
         <div class="stats" id="mains">
-
-            <button id="clicker">T</button>
-            <span id="energy">500</span>
+            <button id="clicker"></button>
+            <span id="energy"></span>
         </div>
-       <div id="upgrade1" class="hidden2">
+        <div id="upgrade1" class="hidden2">
             <button id="upgrade" class="disabled">Multiply Costs: <span id="upgradeCost">10</span> T</button>
         </div>
-        <p id="upgradeMessage"></p>
         <nav>
             <a href="#" id="hideButton">MAIN</a>
             <a href="#" id="showButton">BOOST</a>
             <a href="#">AIRDROP</a>
             <div id="indicator"></div>
         </nav>
-        <div id="upgrade-info"></div>
+        <div id="click-result"></div>
     </div>
     <script src="main.js.js"></script>
 </body>

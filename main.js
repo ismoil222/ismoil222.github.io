@@ -1,13 +1,12 @@
 // script.js
 document.addEventListener("DOMContentLoaded", function() {
     let clicks = parseInt(localStorage.getItem('clicks')) || 0;
-    let energy = parseInt(localStorage.getItem('energy')) || 500;
+    let energy = parseInt(localStorage.getItem('energy')) || 100;
     let upgradeLevel = parseInt(localStorage.getItem('upgradeLevel')) || 1;
     let upgradeCost = parseInt(localStorage.getItem('upgradeCost')) || 10;
     
     const clicksElement = document.getElementById('clicks');
     const energyElement = document.getElementById('energy');
-    const upgradeInfoElement = document.getElementById('upgrade-info');
     const upgradeCostElement = document.getElementById('upgradeCost');
     const clickerButton = document.getElementById('clicker');
     const upgradeButton = document.getElementById('upgrade');
@@ -19,20 +18,14 @@ document.addEventListener("DOMContentLoaded", function() {
     clickerButton.addEventListener('click', function() {
         if (energy > 0) {
             clicks += upgradeLevel;
-            energy--;
+            energy-=upgradeLevel;
             clicksElement.textContent = clicks;
             energyElement.textContent = energy;
-            showUpgradeInfo(`+${upgradeLevel} `);
             saveGame();
         }
     });
     
-    function showUpgradeInfo(text) {
-        upgradeInfoElement.textContent = text;
-        setTimeout(() => {
-            upgradeInfoElement.textContent = '';
-        }, 1000);
-    }
+    
 
     upgradeButton.addEventListener('click', function() {
         if (clicks >= upgradeCost) {
@@ -43,9 +36,7 @@ document.addEventListener("DOMContentLoaded", function() {
             clicksElement.textContent = clicks;
             energyElement.textContent = energy;
             upgradeCostElement.textContent = upgradeCost;
-            upgradeMessage.textContent = `+(левел: ${upgradeLevel})`;
             saveGame();
-            setTimeout(() => upgradeMessage.textContent = '', 2000); // Скрыть сообщение через 2 секунды
         }
     });
 
@@ -58,7 +49,19 @@ document.addEventListener("DOMContentLoaded", function() {
             saveGame();
         }
     });
+
+    document.getElementById('clicker').addEventListener('click', () => {
+        const clickResult = document.getElementById('click-result');
+        clickResult.textContent = `+${upgradeLevel}`;
+        clickResult.classList.add('show');
+        
+        setTimeout(() => {
+            clickResult.classList.remove('show');
+        }, 1000);
+    });
     
+
+
     function updateUI() {
         clicksElement.textContent = clicks;
         energyElement.textContent = energy;
@@ -72,7 +75,6 @@ document.addEventListener("DOMContentLoaded", function() {
         localStorage.setItem('upgradeCost', upgradeCost);
     }
 
-    // Восстановление энергии
     setInterval(function() {
         if (energy < 100) {
             energy++;
@@ -86,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 document.addEventListener("DOMContentLoaded", function(){
     const button = document.getElementById('showButton');
-    const element1 = document.getElementById('upgrade');
+    const element1 = document.getElementById('upgrade1');
     const element2 = document.getElementById('mains');
   
     button.addEventListener('click', function () {
@@ -97,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function(){
   
   document.addEventListener("DOMContentLoaded", function(){
     const button = document.getElementById('hideButton');
-    const element1 = document.getElementById('upgrade');
+    const element1 = document.getElementById('upgrade1');
     const element2 = document.getElementById('mains');
   
     button.addEventListener('click', function () {
