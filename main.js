@@ -120,8 +120,15 @@ document.addEventListener("DOMContentLoaded", function(){
 document.addEventListener("DOMContentLoaded", function(){
     const button2 = document.getElementById('showButton');
     const button3 = document.getElementById('showButton');
+    var btn1 = document.getElementById('hideButton')
+    var btn2 = document.getElementById('hideButton')
 
     button2.addEventListener('click', function () {
         button3.classList.add('clicked')
+        btn2.classList.remove('clicked')
     });
+    btn1.addEventListener('click', function () {
+        button3.classList.remove('clicked')
+        btn2.classList.add("clicked")
+    })
 });
