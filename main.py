@@ -7,7 +7,6 @@ from aiogram.filters import CommandStart, Command
 from decouple import config
 
 token = config('TOKEN', cast=str)
-
 bot = Bot(token=token)
 dp = Dispatcher()
 

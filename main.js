@@ -74,13 +74,13 @@ document.addEventListener("DOMContentLoaded", function() {
         localStorage.setItem('energy', energy);
         localStorage.setItem('upgradeCost', upgradeCost);
     }
-
+let ll = 12
     setInterval(function() {
         if (energy < 100) {
             energy++;
             updateUI();
             saveGame();
-        }
+        } 
     }, 1000);
 
     updateUI();
@@ -109,10 +109,10 @@ document.addEventListener("DOMContentLoaded", function(){
 });
 
 document.addEventListener("DOMContentLoaded", function(){
-    const button = document.getElementById('clicker');
+    const button7 = document.getElementById('clicker');
     const element12 = document.getElementById('clicker');
 
-    button.addEventListener('click', function () {
+    button7.addEventListener('click', function () {
         element12.classList.add('tapp')
     });
 });
