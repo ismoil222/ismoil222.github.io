@@ -18,6 +18,7 @@ body {
 #game {
     margin-top: 90px;
     font-weight: 600;
+    
 }
 
 #click-value {
@@ -29,12 +30,11 @@ body {
 
 #upgrade {
     width: 200px;
-    position: absolute;
+
     height: 100px;
     border: none;
     border-radius: 5px;
     bottom: 700px;
-    margin-left: -100px;
     color: rgb(202, 202, 202);
     background-color: #1d1d1d;
     background-size: 40rem auto;
