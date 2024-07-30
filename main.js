@@ -1,134 +1,63 @@
-// script.js
-document.addEventListener("DOMContentLoaded", function() {
-    let clicks = parseInt(localStorage.getItem('clicks')) || 0;
-    let energy = parseInt(localStorage.getItem('energy')) || 100;
-    let upgradeLevel = parseInt(localStorage.getItem('upgradeLevel')) || 1;
-    let upgradeCost = parseInt(localStorage.getItem('upgradeCost')) || 10;
-    
-    const clicksElement = document.getElementById('clicks');
-    const energyElement = document.getElementById('energy');
-    const upgradeCostElement = document.getElementById('upgradeCost');
-    const clickerButton = document.getElementById('clicker');
-    const upgradeButton = document.getElementById('upgrade');
-    
-    clicksElement.textContent = clicks;
-    energyElement.textContent = energy;
-    upgradeCostElement.textContent = upgradeCost;
-    
-    clickerButton.addEventListener('click', function() {
-        if (energy > 0) {
-            clicks += upgradeLevel;
-            energy-=upgradeLevel;
-            clicksElement.textContent = clicks;
-            energyElement.textContent = energy;
-            saveGame();
-        }
-    });
-    
-    
+const $circle = document.querySelector('#circle')
+const $score = document.querySelector('#score')
 
-    upgradeButton.addEventListener('click', function() {
-        if (clicks >= upgradeCost) {
-            clicks -= upgradeCost;
-            upgradeLevel++;
-            upgradeCost = (upgradeLevel + 1) * 10;
-            energy = 100; // Восстановление энергии
-            clicksElement.textContent = clicks;
-            energyElement.textContent = energy;
-            upgradeCostElement.textContent = upgradeCost;
-            saveGame();
-        }
-    });
+function start() {
+  setScore(getScore())
+  setImage()
+}
 
-    upgradeButton.addEventListener('click', function() {
-        if (clicks >= upgradeCost) {
-            clicks -= upgradeCost;
-            upgradeCost += 10;
-            energy = 100;
-            updateUI();
-            saveGame();
-        }
-    });
+function setScore(score) {
+  localStorage.setItem('score', score)
+  $score.textContent = score
+}
 
-    document.getElementById('clicker').addEventListener('click', () => {
-        const clickResult = document.getElementById('click-result');
-        clickResult.textContent = `+${upgradeLevel}`;
-        clickResult.classList.add('show');
-        
-        setTimeout(() => {
-            clickResult.classList.remove('show');
-        }, 1000);
-    });
-    
-
-
-    function updateUI() {
-        clicksElement.textContent = clicks;
-        energyElement.textContent = energy;
-        upgradeCostElement.textContent = upgradeCost;
-        upgradeButton.classList.toggle('disabled', clicks < upgradeCost);
+function setImage() {
+    if (getScore() >= 50) {
+        $circle.setAttribute('src', 'logo-removebg-preview.png')
     }
+}
 
-    function saveGame() {
-        localStorage.setItem('clicks', clicks);
-        localStorage.setItem('energy', energy);
-        localStorage.setItem('upgradeCost', upgradeCost);
-    }
-let ll = 12
-    setInterval(function() {
-        if (energy < 100) {
-            energy++;
-            updateUI();
-            saveGame();
-        } 
-    }, 1000);
+function getScore() {
+  return Number(localStorage.getItem('score')) ?? 0
+}
 
-    updateUI();
-});
+function addOne() {
+  setScore(getScore() + 2)
+  setImage()
+}
 
-document.addEventListener("DOMContentLoaded", function(){
-    const button = document.getElementById('showButton');
-    const element1 = document.getElementById('upgrade1');
-    const element2 = document.getElementById('mains');
+$circle.addEventListener('click', (event) => {
+  const rect = $circle.getBoundingClientRect()
 
-    button.addEventListener('click', function () {
-        element1.classList.remove('hidden2')
-        element2.classList.add('hidden2')
-    });
-});
+  const offfsetX = event.clientX - rect.left - rect.width / 2
+  const offfsetY = event.clientY - rect.top - rect.height / 2
 
-document.addEventListener("DOMContentLoaded", function(){
-    const button = document.getElementById('hideButton');
-    const element1 = document.getElementById('upgrade1');
-    const element2 = document.getElementById('mains');
+  const DEG = 40
 
-    button.addEventListener('click', function () {
-        element1.classList.add('hidden2')
-        element2.classList.remove('hidden2')
-    });
-});
+  const tiltX = (offfsetY / rect.height) * DEG
+  const tiltY = (offfsetX / rect.width) * -DEG
 
-document.addEventListener("DOMContentLoaded", function(){
-    const button7 = document.getElementById('clicker');
-    const element12 = document.getElementById('clicker');
+  $circle.style.setProperty('--tiltX', `${tiltX}deg`)
+  $circle.style.setProperty('--tiltY', `${tiltY}deg`)
 
-    button7.addEventListener('click', function () {
-        element12.classList.add('tapp')
-    });
-});
+  setTimeout(() => {
+    $circle.style.setProperty('--tiltX', `0deg`)
+    $circle.style.setProperty('--tiltY', `0deg`)
+  }, 300)
 
-document.addEventListener("DOMContentLoaded", function(){
-    const button2 = document.getElementById('showButton');
-    const button3 = document.getElementById('showButton');
-    var btn1 = document.getElementById('hideButton')
-    var btn2 = document.getElementById('hideButton')
+  const plusOne = document.createElement('div')
+  plusOne.classList.add('plus-one')
+  plusOne.textContent = '+2'
+  plusOne.style.left = `${event.clientX - rect.left}px`
+  plusOne.style.top = `${event.clientY - rect.top}px`
 
-    button2.addEventListener('click', function () {
-        button3.classList.add('clicked')
-        btn2.classList.remove('clicked')
-    });
-    btn1.addEventListener('click', function () {
-        button3.classList.remove('clicked')
-        btn2.classList.add("clicked")
-    })
-});
+  $circle.parentElement.appendChild(plusOne)
+
+  addOne()
+
+  setTimeout(() => {
+    plusOne.remove()
+  }, 2000)
+})
+
+start()
