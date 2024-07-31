@@ -10,7 +10,7 @@ body {
     font-family: "Poppins", sans-serif;
     justify-content: center;
     align-items: center;
-    background-color: #1c1f24;
+    background-color: #1d1d1d;
 }
 
 .header {
@@ -47,7 +47,12 @@ body {
     --tiltY: 0deg;
     transform: rotateX(var(--tiltX)) rotateY(var(--tiltY));
 }
-
+#leveltap {
+    width: 200px;
+    height: 100px;
+    margin-top: 00px;
+    background-color: #fff;
+}
 .plus-one {
     position: absolute;
     text-shadow: 0px 0px 4px rgba(234, 182, 64, 0.25);
