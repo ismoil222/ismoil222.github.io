@@ -1,14 +1,17 @@
 const $circle = document.querySelector('#circle')
 const $score = document.querySelector('#score')
+const $upgrade = document.querySelector("#upgrade")
+const energyCount = document.getElementById('energy-count');
+const clicks = 2
 
 function start() {
-  setScore(getScore())
-  setImage()
+    setScore(getScore())
+    setImage()
 }
 
 function setScore(score) {
-  localStorage.setItem('score', score)
-  $score.textContent = score
+    localStorage.setItem('score', score)
+    $score.textContent = score
 }
 
 function setImage() {
@@ -18,21 +21,20 @@ function setImage() {
 }
 
 function getScore() {
-  return Number(localStorage.getItem('score')) ?? 0
+    return Number(localStorage.getItem('score')) ?? 0
 }
 
 function addOne() {
-  setScore(getScore() + 2)
-  setImage()
+    setScore(getScore() + clicks);
+    setImage();
 }
 
 $circle.addEventListener('click', (event) => {
-  const rect = $circle.getBoundingClientRect()
+    const rect = $circle.getBoundingClientRect()
+    const offfsetX = event.clientX - rect.left - rect.width / 2
+    const offfsetY = event.clientY - rect.top - rect.height / 2
 
-  const offfsetX = event.clientX - rect.left - rect.width / 2
-  const offfsetY = event.clientY - rect.top - rect.height / 2
-
-  const DEG = 40
+    const DEG = 50
 
   const tiltX = (offfsetY / rect.height) * DEG
   const tiltY = (offfsetX / rect.width) * -DEG
@@ -47,7 +49,7 @@ $circle.addEventListener('click', (event) => {
 
   const plusOne = document.createElement('div')
   plusOne.classList.add('plus-one')
-  plusOne.textContent = '+2'
+  plusOne.textContent = (`+${clicks}`)
   plusOne.style.left = `${event.clientX - rect.left}px`
   plusOne.style.top = `${event.clientY - rect.top}px`
 
