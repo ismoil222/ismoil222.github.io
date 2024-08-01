@@ -1,40 +1,51 @@
 const $circle = document.querySelector('#circle')
 const $score = document.querySelector('#score')
-const $upgrade = document.querySelector("#upgrade")
-const energyCount = document.getElementById('energy-count');
-const clicks = 2
+click = 2;
 
 function start() {
-    setScore(getScore())
-    setImage()
+  setScore(getScore())
+  setImage()
+  upgrade()
 }
 
 function setScore(score) {
-    localStorage.setItem('score', score)
-    $score.textContent = score
+  localStorage.setItem('score', score)
+  $score.textContent = score
 }
 
 function setImage() {
-    if (getScore() >= 1000) {
-        $circle.setAttribute('src', 'logo-removebg-preview.png')
-    }
+  if (getScore() >= 50) {
+    $circle.setAttribute('src', 'logo-removebg-preview.png')
+  }
 }
 
 function getScore() {
-    return Number(localStorage.getItem('score')) ?? 0
+  return Number(localStorage.getItem('score')) ?? 0
 }
 
 function addOne() {
-    setScore(getScore() + clicks);
-    setImage();
+  setScore(getScore() + click)
+  setImage()
+}
+
+function upgrade() {
+  if (getScore() >= 50) {
+      const newScore = getScore() - 50;  // Calculate the new score
+      setScore(newScore);  // Update the score
+      console.log("upgraded");
+      click = click + 1;
+  } else {
+    console.log("not enough money")
+  }
 }
 
 $circle.addEventListener('click', (event) => {
-    const rect = $circle.getBoundingClientRect()
-    const offfsetX = event.clientX - rect.left - rect.width / 2
-    const offfsetY = event.clientY - rect.top - rect.height / 2
+  const rect = $circle.getBoundingClientRect()
 
-    const DEG = 50
+  const offfsetX = event.clientX - rect.left - rect.width / 2
+  const offfsetY = event.clientY - rect.top - rect.height / 2
+
+  const DEG = 50
 
   const tiltX = (offfsetY / rect.height) * DEG
   const tiltY = (offfsetX / rect.width) * -DEG
@@ -49,7 +60,7 @@ $circle.addEventListener('click', (event) => {
 
   const plusOne = document.createElement('div')
   plusOne.classList.add('plus-one')
-  plusOne.textContent = (`+${clicks}`)
+  plusOne.textContent = `+${click}`
   plusOne.style.left = `${event.clientX - rect.left}px`
   plusOne.style.top = `${event.clientY - rect.top}px`
 
