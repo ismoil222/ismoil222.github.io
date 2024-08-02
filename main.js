@@ -28,10 +28,11 @@ function addOne() {
   setImage()
 }
 
+
 function upgrade() {
   if (getScore() >= 50) {
-      const newScore = getScore() - 50;  // Calculate the new score
-      setScore(newScore);  // Update the score
+      const newScore = getScore() - 50;
+      setScore(newScore); 
       console.log("upgraded");
       click = click + 1;
   } else {
